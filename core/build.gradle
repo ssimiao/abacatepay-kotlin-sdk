@@ -13,6 +13,15 @@ repositories {
 }
 
 publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.abacatepay'
+            artifactId = 'core'
+            version = '1.0.0'
+
+            from components.java
+        }
+    }
     repositories {
         maven {
             name = "GitHubPackages"
