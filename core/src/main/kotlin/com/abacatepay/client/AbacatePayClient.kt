@@ -1,8 +1,8 @@
-package com.abacatepay.sdk.client
+package com.abacatepay.client
 
-import com.abacatepay.sdk.model.AbacatePayResponse
-import com.abacatepay.sdk.model.Billing
-import com.abacatepay.sdk.model.BillingResponse
+import com.abacatepay.model.AbacatePayResponse
+import com.abacatepay.model.Billing
+import com.abacatepay.model.BillingResponse
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.*
@@ -22,7 +22,6 @@ class AbacatePayClient(
         }
     }
 ) {
-
     suspend fun createBilling(billing: Billing): AbacatePayResponse<BillingResponse> {
         return httpClient.post("${baseUrl}/billing/create") {
             contentType(ContentType.Application.Json)

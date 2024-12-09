@@ -1,4 +1,4 @@
-package com.abacatepay.sdk.model
+package com.abacatepay.model
 
 import kotlinx.serialization.Serializable
 

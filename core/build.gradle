@@ -4,7 +4,7 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization' version "2.0.0"
 }
 
-group = 'com.abacatepay.sdk'
+group = 'com.abacatepay'
 version = '1.0'
 
 repositories {
@@ -26,8 +26,4 @@ test {
 
 kotlin {
     jvmToolchain(11)
-}
-
-application {
-    mainClassName = 'MainKt'
 }

@@ -1,8 +1,7 @@
 package core
 
-import com.abacatepay.sdk.client.AbacatePayClient
-import com.abacatepay.sdk.model.*
-import com.abacatepay.sdk.model.Metadata
+import com.abacatepay.client.AbacatePayClient
+import com.abacatepay.model.*
 import io.ktor.client.engine.mock.*
 import io.ktor.http.*
 import io.ktor.utils.io.*
@@ -57,28 +56,30 @@ class AbacatePayClientTest {
 
     private fun productResponseTemplate() = ProductResponse("id", "id", 1)
 
-    private fun customerTemplate() = Customer("nome", "1268711192", "clienteteste@gmail.com", "49799449065")
+    private fun customerTemplate() =
+        Customer("nome", "1268711192", "clienteteste@gmail.com", "49799449065")
 
-    private fun billingResponseTemplate(productResponse: ProductResponse, customer: Customer) = BillingResponse(
-        "id",
-        "url",
-        100,
-        PaymentStatus.PENDING,
-        true,
-        listOf(PaymentMethod.PIX),
-        listOf(productResponse),
-        PaymentFrequency.ONE_TIME,
-        "id",
-        "id",
-        LocalDateTime.now().toString(),
-        LocalDateTime.now().toString(),
-        BillingMetadata(
+    private fun billingResponseTemplate(productResponse: ProductResponse, customer: Customer) =
+        BillingResponse(
+            "id",
+            "url",
             100,
-            "http://voltar",
-            "http://completar"
-        ),
-        Metadata(customer)
-    )
+            PaymentStatus.PENDING,
+            true,
+            listOf(PaymentMethod.PIX),
+            listOf(productResponse),
+            PaymentFrequency.ONE_TIME,
+            "id",
+            "id",
+            LocalDateTime.now().toString(),
+            LocalDateTime.now().toString(),
+            BillingMetadata(
+                100,
+                "http://voltar",
+                "http://completar"
+            ),
+            Metadata(customer)
+        )
 
     private inline fun <reified T> abacatePayClientMock(response: T) =
         AbacatePayClient(apiKey = "apiKey", engine = MockEngine { _ ->
