@@ -26,14 +26,11 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
     
-    - name: Go to core
-      run: cd /core
-      
     - name: Build with Gradle
-      run: gradle build
+      run: gradle -p core build
 
     - name: Publish to GitHub Packages
-      run: gradle publish
+      run: gradle -p core publish
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
