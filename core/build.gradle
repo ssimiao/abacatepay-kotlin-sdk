@@ -2,6 +2,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.0.0'
     id 'application'
     id 'org.jetbrains.kotlin.plugin.serialization' version "2.0.0"
+    id 'maven-publish'
 }
 
 group = 'com.abacatepay'
@@ -9,6 +10,14 @@ version = '1.0'
 
 repositories {
     mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/ssimiao/abacatepay-kotlin-sdk")
+        credentials {
+            username = System.getenv("USERNAME") // GitHub username
+            password = System.getenv("TOKEN")   // GitHub token
+        }
+    }
 }
 
 dependencies {
