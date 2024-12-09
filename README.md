@@ -1,3 +1,7 @@
+<div align="center">
+    <img src="https://i.imgur.com/bnDP5Zx.png" width="300" align="center" alt="drawing"/>
+</div>
+
 # AbacatePay Kotlin
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0-blue.svg)](http://kotlinlang.org)
@@ -10,7 +14,7 @@ The easiest way to integrate your kotlin base code to AbacatePay Gateway with su
 ### For release version
 
 ```kotlin
-implementation("com.abacatepay.sdk:core:1.0.0")
+implementation("com.abacatepay:core:1.0.0")
 ```
 
 ## Quick Start
