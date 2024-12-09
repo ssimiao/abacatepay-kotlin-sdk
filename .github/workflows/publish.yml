@@ -2,8 +2,8 @@ name: Publish Kotlin Library
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - main
 
 jobs:
   build:
@@ -25,12 +25,12 @@ jobs:
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
-
+    
     - name: Build with Gradle
-      run: ./gradlew build
+      run: gradle -p core build
 
     - name: Publish to GitHub Packages
-      run: ./gradlew publish
+      run: gradle -p core publish
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
