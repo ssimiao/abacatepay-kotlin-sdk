@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.abacatepay'
-version = '1.0.4'
+version = '1.0.5'
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.abacatepay'
             artifactId = 'core'
-            version = '1.0.4'
+            version = '1.0.5'
 
             from components.java
         }
