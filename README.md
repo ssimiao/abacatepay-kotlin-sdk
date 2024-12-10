@@ -14,7 +14,14 @@ The easiest way to integrate your kotlin base code to AbacatePay Gateway with su
 ### For release version
 
 ```kotlin
-implementation("com.abacatepay:core:1.0.0")
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.ssimiao:abacatepay-kotlin-sdk:1.0.4'
+}
 ```
 
 ## Quick Start
