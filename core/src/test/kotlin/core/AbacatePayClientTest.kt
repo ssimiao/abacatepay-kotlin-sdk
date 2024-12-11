@@ -49,7 +49,7 @@ class AbacatePayClientTest {
         )
 
         runBlocking {
-            val listBilling = abacatePayClient.listBilling()
+            val listBilling = abacatePayClient.listBillings()
             assertNotNull(listBilling)
         }
     }
@@ -80,6 +80,51 @@ class AbacatePayClientTest {
             ),
             Metadata(customer)
         )
+
+    @Test
+    fun shouldCreateCustomer() {
+        val customer = customerTemplate()
+        val abacatePayClient: AbacatePayClient = abacatePayClientMock(
+            AbacatePayResponse(
+                createCustomeResponseTemplate(customer)
+            )
+        )
+
+        runBlocking {
+            val customerResponse = abacatePayClient.createCustomer(customer)
+            assertNotNull(customerResponse)
+        }
+    }
+
+    @Test
+    fun shouldListCustomer() {
+        val customer = customerTemplate()
+        val abacatePayClient: AbacatePayClient = abacatePayClientMock(
+            AbacatePayResponse(
+                listOf(
+                    CustomerResponse(
+                        "id",
+                        customer
+                    )
+                )
+            )
+        )
+
+        runBlocking {
+            val customerResponse = abacatePayClient.listCustomers()
+            assertNotNull(customerResponse)
+        }
+    }
+
+    private fun createCustomeResponseTemplate(customer: Customer) = CreateCustomerResponse(
+        "id",
+        true,
+        "accountId",
+        "storeId",
+        LocalDateTime.now().toString(),
+        LocalDateTime.now().toString(),
+        customer
+    )
 
     private inline fun <reified T> abacatePayClientMock(response: T) =
         AbacatePayClient(apiKey = "apiKey", engine = MockEngine { _ ->
