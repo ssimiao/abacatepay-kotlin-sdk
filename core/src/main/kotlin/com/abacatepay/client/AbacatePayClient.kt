@@ -1,9 +1,7 @@
 package com.abacatepay.client
 
 import com.abacatepay.exception.AbacatePayGenericException
-import com.abacatepay.model.AbacatePayResponse
-import com.abacatepay.model.Billing
-import com.abacatepay.model.BillingResponse
+import com.abacatepay.model.*
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.*
@@ -36,8 +34,26 @@ class AbacatePayClient(
         return getAbacatePayResponse(response)
     }
 
-    override suspend fun listBilling(): AbacatePayResponse<List<BillingResponse>> {
+    override suspend fun listBillings(): AbacatePayResponse<List<BillingResponse>> {
         val response =  httpClient.get("${baseUrl}/billing/list") {
+            bearerAuth(apiKey)
+        }
+
+        return getAbacatePayResponse(response)
+    }
+
+    override suspend fun createCustomer(customer: Customer): AbacatePayResponse<CreateCustomerResponse> {
+        val response =  httpClient.post("${baseUrl}/customer/create") {
+            contentType(ContentType.Application.Json)
+            setBody(customer)
+            bearerAuth(apiKey)
+        }
+
+        return getAbacatePayResponse(response)
+    }
+
+    override suspend fun listCustomers(): AbacatePayResponse<List<CustomerResponse>> {
+        val response = httpClient.get("${baseUrl}/customer/list") {
             bearerAuth(apiKey)
         }
 

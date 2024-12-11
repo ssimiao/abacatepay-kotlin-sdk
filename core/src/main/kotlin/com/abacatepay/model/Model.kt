@@ -73,13 +73,13 @@ data class BillingMetadata(
 )
 
 @Serializable
-data class AbacatePayResponse<T> (
+data class AbacatePayResponse<T>(
     val data: T? = null,
     val error: String? = null
 )
 
 @Serializable
-data class Metadata<T> (
+data class Metadata<T>(
     val metadata: T
 )
 
@@ -87,3 +87,20 @@ data class Metadata<T> (
 enum class PaymentStatus {
     PENDING, EXPIRED, CANCELLED, PAID, REFUNDED
 }
+
+@Serializable
+data class CreateCustomerResponse(
+    val id: String,
+    val devMode: Boolean,
+    val accountId: String,
+    val storeId: String,
+    val createdAt: String,
+    val updatedAt: String,
+    val metadata: Customer
+)
+
+@Serializable
+data class CustomerResponse(
+    val id: String,
+    val metadata: Customer
+)

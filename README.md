@@ -2,7 +2,7 @@
     <img src="https://i.imgur.com/bnDP5Zx.png" width="300" align="center" alt="drawing"/>
 </div>
 
-# AbacatePay Kotlin
+# AbacatePay Kotlin SDK
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0-blue.svg)](http://kotlinlang.org)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io)
@@ -29,7 +29,7 @@ dependencies {
 ```kotlin
 runBlocking {
     val client = AbacatePayClient(apiKey = "your_key")
-    client.listBilling()
+    client.listBillings()
 }
 
 ```
