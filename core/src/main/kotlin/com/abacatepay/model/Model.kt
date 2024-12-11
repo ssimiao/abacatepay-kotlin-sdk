@@ -74,7 +74,7 @@ data class BillingMetadata(
 
 @Serializable
 data class AbacatePayResponse<T> (
-    val data: T?,
+    val data: T? = null,
     val error: String? = null
 )
 
